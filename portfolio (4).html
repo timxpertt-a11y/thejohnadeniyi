@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | The John Adeniyi</title>
+  <meta name="description" content="Selected brand strategy, visual identity, and offer architecture projects by The John Adeniyi.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="inner-pages.css">
+  <style>
+    /* ── Portfolio page specific ── */
+    .pf-hero {
+      min-height: 48vh;
+      display: flex;
+      align-items: flex-end;
+      padding-top: var(--nav-h);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--grey-light);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .pf-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(8,63,60,0.1) 1px, transparent 1px);
+      background-size: 38px 38px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .pf-hero::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(28,199,190,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pf-hero__inner { position: relative; z-index: 1; }
+
+    /* ── Main slider ── */
+    .pf-slider-section { background: var(--white); border-bottom: 1px solid var(--grey-light); }
+
+    .pf-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(8,63,60,0.12);
+      background: var(--text);
+    }
+
+    .pf-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Each slide is exactly 1:1 */
+    .pf-slide {
+      min-width: 100%;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pf-slide__svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Overlay info on hover */
+    .pf-slide__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .pf-slide:hover .pf-slide__overlay,
+    .pf-slide:focus-within .pf-slide__overlay { opacity: 1; }
+
+    /* Always visible on mobile */
+    @media (pointer: coarse) {
+      .pf-slide__overlay { opacity: 1; }
+    }
+
+    .pf-slide__tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .pf-slide__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .pf-slide__desc {
+      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* ── Slide navigation ── */
+    .pf-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+
+    .pf-nav__btn {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--grey-light);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      transition: all 0.28s ease;
+      flex-shrink: 0;
+    }
+    .pf-nav__btn:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      color: #fff;
+      transform: scale(1.06);
+    }
+
+    .pf-nav__dots {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .pf-nav__dot {
+      width: 8px; height: 8px;
+      border-radius: 100px;
+      background: var(--grey-mid);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      padding: 0;
+    }
+    .pf-nav__dot.active {
+      background: var(--accent-teal);
+      width: 28px;
+    }
+
+    .pf-nav__counter {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--grey-dark);
+      letter-spacing: 0.08em;
+      min-width: 48px;
+      text-align: center;
+    }
+
+    /* ── Project meta cards below slider ── */
+    .pf-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .pf-meta-card {
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      border-radius: 16px;
+      padding: 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .pf-meta-card:hover,
+    .pf-meta-card.active {
+      border-color: var(--accent-teal);
+      box-shadow: 0 12px 40px rgba(8,63,60,0.09);
+      transform: translateY(-2px);
+    }
+    .pf-meta-card.active::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent-teal);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .pf-meta-card__num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      margin-bottom: 0.75rem;
+    }
+    .pf-meta-card.active .pf-meta-card__num { color: var(--accent-teal); }
+
+    .pf-meta-card__name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .pf-meta-card__type {
+      font-size: 0.78rem;
+      color: var(--grey-dark);
+    }
+
+    /* ── More projects / locked ── */
+    .pf-locked-section { background: var(--bg); }
+
+    .pf-locked-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .pf-locked-card {
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .pf-locked-card:hover { border-color: var(--accent-teal); transform: translateY(-3px); }
+
+    .pf-locked-card__bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+    }
+
+    .pf-locked-card__lock {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--grey-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--grey-mid);
+      position: relative; z-index: 1;
+    }
+
+    .pf-locked-card__label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--grey-mid);
+      letter-spacing: 0.08em;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+
+    .pf-cta-box {
+      margin-top: 3rem;
+      background: var(--accent-dark);
+      border-radius: 20px;
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .pf-cta-box::before {
+      content: '';
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(28,199,190,0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .pf-meta-grid { grid-template-columns: 1fr; }
+      .pf-locked-grid { grid-template-columns: repeat(2, 1fr); }
+      .pf-cta-box { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .pf-locked-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="The John Adeniyi Home">The John Adeniyi<span>Brand Strategy</span></a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html" class="nav__link">Home</a></li>
+      <li><a href="about.html" class="nav__link">About</a></li>
+      <li><a href="index.html#services" class="nav__link">Services</a></li>
+      <li><a href="portfolio.html" class="nav__link active">Portfolio</a></li>
+      <li><a href="products.html" class="nav__link">Products</a></li>
+      <li><a href="testimonials.html" class="nav__link">Testimonials</a></li>
+      <li><a href="awards.html" class="nav__link">Awards</a></li>
+    </ul>
+    <a href="contact.html" class="nav__cta">Book a Call</a>
+    <button class="nav__hamburger" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html" class="nav__link">Home</a>
+  <a href="about.html" class="nav__link">About</a>
+  <a href="index.html#services" class="nav__link">Services</a>
+  <a href="portfolio.html" class="nav__link">Portfolio</a>
+  <a href="products.html" class="nav__link">Products</a>
+  <a href="testimonials.html" class="nav__link">Testimonials</a>
+  <a href="awards.html" class="nav__link">Awards</a>
+  <a href="contact.html" class="btn btn-primary" style="align-self:start;margin-top:0.5rem;">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<section class="pf-hero">
+  <div class="container pf-hero__inner">
+    <p class="label page-hero__label reveal">Portfolio</p>
+    <h1 class="page-hero__title reveal reveal-delay-1">Selected<br><span style="color:var(--accent-teal);">Works.</span></h1>
+    <p class="page-hero__sub reveal reveal-delay-2">Brand transformations built for clarity, identity, and growth. Three featured projects, with more available on request.</p>
+  </div>
+</section>
+
+<!-- MAIN SLIDER -->
+<section class="section pf-slider-section">
+  <div class="container">
+
+    <!-- 1:1 Slider -->
+    <div class="pf-slider" role="region" aria-label="Portfolio projects slider">
+      <div class="pf-track" id="pfTrack">
+
+        <!-- Slide 1 -->
+        <div class="pf-slide" role="group" aria-label="Project 1 of 3: GrowthPath Co.">
+          <svg class="pf-slide__svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="800" height="800" fill="#083F3C"/>
+            <!-- grid -->
+            <line x1="0" y1="200" x2="800" y2="200" stroke="rgba(28,199,190,0.06)" stroke-width="1"/>
+            <line x1="0" y1="400" x2="800" y2="400" stroke="rgba(28,199,190,0.06)" stroke-width="1"/>
+            <line x1="0" y1="600" x2="800" y2="600" stroke="rgba(28,199,190,0.06)" stroke-width="1"/>
+            <line x1="200" y1="0" x2="200" y2="800" stroke="rgba(28,199,190,0.06)" stroke-width="1"/>
+            <line x1="400" y1="0" x2="400" y2="800" stroke="rgba(28,199,190,0.06)" stroke-width="1"/>
+            <line x1="600" y1="0" x2="600" y2="800" stroke="rgba(28,199,190,0.06)" stroke-width="1"/>
+            <!-- brand mark ring -->
+            <circle cx="400" cy="340" r="160" stroke="rgba(28,199,190,0.15)" stroke-width="1.5" fill="none"/>
+            <circle cx="400" cy="340" r="120" stroke="rgba(28,199,190,0.25)" stroke-width="1" fill="none"/>
+            <!-- Monogram -->
+            <text x="400" y="380" text-anchor="middle" font-family="Outfit,sans-serif" font-size="110" font-weight="700" fill="rgba(28,199,190,0.22)" letter-spacing="-6">GP</text>
+            <!-- wordmark -->
+            <text x="400" y="520" text-anchor="middle" font-family="Outfit,sans-serif" font-size="26" font-weight="700" fill="rgba(255,255,255,0.8)" letter-spacing="4">GROWTHPATH CO.</text>
+            <text x="400" y="556" text-anchor="middle" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,0.35)" letter-spacing="5">BRAND STRATEGY</text>
+            <!-- accent dot -->
+            <circle cx="400" cy="620" r="8" fill="#1CC7BE"/>
+            <line x1="290" y1="590" x2="510" y2="590" stroke="rgba(28,199,190,0.3)" stroke-width="1"/>
+          </svg>
+          <div class="pf-slide__overlay">
+            <p class="pf-slide__tag">Brand Strategy</p>
+            <h2 class="pf-slide__title">GrowthPath Co.</h2>
+            <p class="pf-slide__desc">Full brand repositioning for a business coaching brand. Resulted in 3x revenue growth within six months of launch.</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="pf-slide" role="group" aria-label="Project 2 of 3: The Creative Scale">
+          <svg class="pf-slide__svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="800" height="800" fill="#121212"/>
+            <!-- texture -->
+            <rect x="80" y="80" width="640" height="640" rx="10" fill="rgba(232,101,49,0.04)" stroke="rgba(232,101,49,0.12)" stroke-width="1.5"/>
+            <!-- cross-lines decorative -->
+            <line x1="80" y1="400" x2="720" y2="400" stroke="rgba(232,101,49,0.08)" stroke-width="1"/>
+            <line x1="400" y1="80" x2="400" y2="720" stroke="rgba(232,101,49,0.08)" stroke-width="1"/>
+            <!-- geometric shapes -->
+            <rect x="240" y="200" width="160" height="160" rx="6" fill="rgba(232,101,49,0.08)" stroke="rgba(232,101,49,0.3)" stroke-width="1.5"/>
+            <rect x="400" y="200" width="160" height="160" rx="6" fill="rgba(232,101,49,0.18)" stroke="rgba(232,101,49,0.3)" stroke-width="1.5"/>
+            <!-- Monogram -->
+            <text x="400" y="390" text-anchor="middle" font-family="Outfit,sans-serif" font-size="100" font-weight="700" fill="rgba(232,101,49,0.25)" letter-spacing="-5">TC</text>
+            <!-- wordmark -->
+            <text x="400" y="520" text-anchor="middle" font-family="Outfit,sans-serif" font-size="26" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="4">THE CREATIVE SCALE</text>
+            <text x="400" y="556" text-anchor="middle" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,0.3)" letter-spacing="5">VISUAL BRANDING</text>
+            <line x1="290" y1="588" x2="510" y2="588" stroke="rgba(232,101,49,0.35)" stroke-width="1"/>
+            <!-- accent square -->
+            <rect x="384" y="608" width="32" height="32" rx="5" fill="#E86531" opacity="0.85"/>
+          </svg>
+          <div class="pf-slide__overlay">
+            <p class="pf-slide__tag" style="color:var(--accent-orange);">Visual Branding</p>
+            <h2 class="pf-slide__title">The Creative Scale</h2>
+            <p class="pf-slide__desc">Complete visual identity system for a design agency. Logo suite, typography, colour palette, and brand guidelines.</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="pf-slide" role="group" aria-label="Project 3 of 3: Mensah Digital Academy">
+          <svg class="pf-slide__svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="800" height="800" fill="#0d5a56"/>
+            <!-- radial glow -->
+            <circle cx="400" cy="340" r="260" fill="rgba(255,255,255,0.03)"/>
+            <!-- outer border -->
+            <rect x="80" y="80" width="640" height="640" rx="10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <!-- chart bars -->
+            <rect x="195" y="500" width="55" height="80" rx="4" fill="rgba(255,255,255,0.12)"/>
+            <rect x="270" y="440" width="55" height="140" rx="4" fill="rgba(255,255,255,0.18)"/>
+            <rect x="345" y="380" width="55" height="200" rx="4" fill="rgba(255,255,255,0.25)"/>
+            <rect x="420" y="330" width="55" height="250" rx="4" fill="rgba(28,199,190,0.5)"/>
+            <rect x="495" y="280" width="55" height="300" rx="4" fill="#1CC7BE"/>
+            <!-- Monogram -->
+            <text x="400" y="310" text-anchor="middle" font-family="Outfit,sans-serif" font-size="100" font-weight="700" fill="rgba(255,255,255,0.07)" letter-spacing="-5">MD</text>
+            <!-- wordmark -->
+            <text x="400" y="670" text-anchor="middle" font-family="Outfit,sans-serif" font-size="24" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="3">MENSAH DIGITAL</text>
+            <text x="400" y="704" text-anchor="middle" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.35)" letter-spacing="4">OFFER ARCHITECTURE</text>
+          </svg>
+          <div class="pf-slide__overlay">
+            <p class="pf-slide__tag">Offer Architecture</p>
+            <h2 class="pf-slide__title">Mensah Digital Academy</h2>
+            <p class="pf-slide__desc">Offer restructure and revenue design for a digital education brand, increasing average order value by 60%.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="pf-nav">
+      <button class="pf-nav__btn" id="pfPrev" aria-label="Previous project">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M11 3L5 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="pf-nav__dots" role="tablist" aria-label="Project navigation">
+        <button class="pf-nav__dot active" role="tab" aria-selected="true" aria-label="Project 1"></button>
+        <button class="pf-nav__dot" role="tab" aria-selected="false" aria-label="Project 2"></button>
+        <button class="pf-nav__dot" role="tab" aria-selected="false" aria-label="Project 3"></button>
+      </div>
+      <span class="pf-nav__counter" id="pfCounter" aria-live="polite">1 / 3</span>
+      <button class="pf-nav__btn" id="pfNext" aria-label="Next project">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Meta cards — click to jump to slide -->
+    <div class="pf-meta-grid">
+      <div class="pf-meta-card active" data-slide="0" role="button" tabindex="0" aria-label="View GrowthPath Co. project">
+        <p class="pf-meta-card__num">01</p>
+        <p class="pf-meta-card__name">GrowthPath Co.</p>
+        <p class="pf-meta-card__type">Brand Strategy</p>
+      </div>
+      <div class="pf-meta-card" data-slide="1" role="button" tabindex="0" aria-label="View The Creative Scale project">
+        <p class="pf-meta-card__num">02</p>
+        <p class="pf-meta-card__name">The Creative Scale</p>
+        <p class="pf-meta-card__type">Visual Branding</p>
+      </div>
+      <div class="pf-meta-card" data-slide="2" role="button" tabindex="0" aria-label="View Mensah Digital Academy project">
+        <p class="pf-meta-card__num">03</p>
+        <p class="pf-meta-card__name">Mensah Digital Academy</p>
+        <p class="pf-meta-card__type">Offer Architecture</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MORE PROJECTS -->
+<section class="section pf-locked-section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <p class="label">More Work</p>
+      <h2 style="margin-top:1rem;">There is more<br>where that came from.</h2>
+      <p style="margin:0.75rem auto 0;max-width:440px;">Additional case studies, brand builds, and strategy projects are available on request.</p>
+    </div>
+
+    <div class="pf-locked-grid">
+      <div class="pf-locked-card">
+        <svg class="pf-locked-card__bg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="80" stroke="#083F3C" stroke-width="2"/>
+        </svg>
+        <div class="pf-locked-card__lock" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="4" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+            <path d="M7 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <p class="pf-locked-card__label">Project 04<br>Available on request</p>
+      </div>
+      <div class="pf-locked-card">
+        <svg class="pf-locked-card__bg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <rect x="20" y="20" width="160" height="160" rx="8" stroke="#E86531" stroke-width="2"/>
+        </svg>
+        <div class="pf-locked-card__lock" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="4" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+            <path d="M7 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <p class="pf-locked-card__label">Project 05<br>Available on request</p>
+      </div>
+      <div class="pf-locked-card">
+        <svg class="pf-locked-card__bg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <polygon points="100,20 180,180 20,180" stroke="#1CC7BE" stroke-width="2" fill="none"/>
+        </svg>
+        <div class="pf-locked-card__lock" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="4" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+            <path d="M7 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <p class="pf-locked-card__label">Project 06<br>Available on request</p>
+      </div>
+    </div>
+
+    <!-- CTA box -->
+    <div class="pf-cta-box reveal">
+      <div style="position:relative;z-index:1;">
+        <p class="label" style="color:var(--accent-teal);">Interested in the full body of work?</p>
+        <h3 style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin-top:0.75rem;font-weight:700;">Reach out and explore the full portfolio.</h3>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.92rem;margin-top:0.5rem;max-width:420px;">Get access to detailed case studies, process breakdowns, and results for all completed projects.</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:1;">
+        <a href="contact.html" class="btn btn-accent">Request Full Portfolio</a>
+        <a href="contact.html" class="btn" style="border:1.5px solid rgba(255,255,255,0.3);color:#fff;">Book a Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">The John Adeniyi</div>
+        <p class="footer__tagline">Brand strategy, visual identity, and mentorship for founders ready to build something that lasts.</p>
+        <a href="contact.html" class="btn btn-accent" style="font-size:0.75rem;">Work With Me</a>
+      </div>
+      <div class="footer__col"><h5>Navigation</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="products.html">Products</a></li></ul></div>
+      <div class="footer__col"><h5>More</h5><ul><li><a href="testimonials.html">Testimonials</a></li><li><a href="awards.html">Awards</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer__col"><h5>Contact</h5><ul><li><a href="mailto:hello@thejohnadeniyi.com">hello@thejohnadeniyi.com</a></li><li><a href="contact.html">Book a Call</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">2025 The John Adeniyi. All rights reserved.</p>
+      <div class="footer__social"><a href="#" aria-label="LinkedIn">LinkedIn</a><a href="#" aria-label="Instagram">Instagram</a><a href="#" aria-label="Twitter">Twitter</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  var track = document.getElementById('pfTrack');
+  if(!track) return;
+  var slides = track.querySelectorAll('.pf-slide');
+  var dots   = document.querySelectorAll('.pf-nav__dot');
+  var metas  = document.querySelectorAll('.pf-meta-card');
+  var counter= document.getElementById('pfCounter');
+  var btnP   = document.getElementById('pfPrev');
+  var btnN   = document.getElementById('pfNext');
+  var cur=0, startX=0, timer;
+
+  function goTo(idx){
+    cur = (idx + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    dots.forEach(function(d,i){
+      d.classList.toggle('active', i===cur);
+      d.setAttribute('aria-selected', i===cur ? 'true' : 'false');
+    });
+    metas.forEach(function(m,i){
+      m.classList.toggle('active', i===cur);
+    });
+    if(counter) counter.textContent = (cur+1) + ' / ' + slides.length;
+  }
+
+  if(btnN) btnN.addEventListener('click', function(){ goTo(cur+1); });
+  if(btnP) btnP.addEventListener('click', function(){ goTo(cur-1); });
+  dots.forEach(function(d,i){ d.addEventListener('click', function(){ goTo(i); }); });
+  metas.forEach(function(m,i){
+    m.addEventListener('click', function(){ goTo(i); });
+    m.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goTo(i); } });
+  });
+
+  // Touch swipe
+  track.addEventListener('touchstart', function(e){ startX=e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    var diff = startX - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 40) goTo(diff > 0 ? cur+1 : cur-1);
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') goTo(cur+1);
+    if(e.key==='ArrowLeft')  goTo(cur-1);
+  });
+
+  // Auto-advance
+  function startTimer(){ timer = setInterval(function(){ goTo(cur+1); }, 5000); }
+  startTimer();
+  track.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  track.addEventListener('mouseleave', function(){ startTimer(); });
+})();
+</script>
+
+</body>
+</html>
