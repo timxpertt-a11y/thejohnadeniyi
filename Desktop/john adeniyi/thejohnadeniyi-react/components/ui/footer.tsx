@@ -2,25 +2,24 @@
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { 
-  Sun, 
-  Moon, 
-  ArrowUp, 
-  Briefcase, 
-  Mail, 
-  Instagram, 
-  Twitter, 
-  Linkedin,
-  Heart
-} from "lucide-react";
+import { Sun, Moon, Mail, Heart } from "lucide-react";
+
+// Inline brand icons since they were removed from lucide-react v1+
+const Instagram = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+);
+
+const X = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M4 4l16 16"/><path d="M4 20L20 4"/></svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+);
 
 // --- Theme Toggle Component ---
-function handleScrollTop() {
-  window.scroll({
-    top: 0,
-    behavior: "smooth",
-  });
-}
+
+const Underline = "hover:underline underline-offset-4 transition-all";
 
 export const ThemeToggle = () => {
   const { setTheme } = useTheme();
@@ -151,13 +150,13 @@ export function Footer() {
             <Mail strokeWidth={1.5} className="h-5 w-5 text-slate-600 dark:text-slate-400" />
           </Link>
           <Link aria-label="Twitter" href="#" target="_blank" className={Underline}>
-            <Twitter className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
           </Link>
           <Link aria-label="Instagram" href="#" target="_blank" className={Underline}>
             <Instagram className="h-5 w-5 text-slate-600 dark:text-slate-400" />
           </Link>
           <Link aria-label="LinkedIn" href="#" target="_blank" className={Underline}>
-            <Linkedin className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <LinkedinIcon className="h-5 w-5 text-slate-600 dark:text-slate-400" />
           </Link>
         </div>
         
