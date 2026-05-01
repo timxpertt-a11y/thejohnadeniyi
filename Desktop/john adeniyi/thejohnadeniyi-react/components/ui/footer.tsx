@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Sun, Moon, Mail, Heart } from "lucide-react";
+import { Sun, Moon, Mail, Heart, ArrowUp, Briefcase } from "lucide-react";
 
 // Inline brand icons since they were removed from lucide-react v1+
 const Instagram = ({ className }: { className?: string }) => (
@@ -19,10 +19,12 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 
 // --- Theme Toggle Component ---
 
-const Underline = "hover:underline underline-offset-4 transition-all";
-
 export const ThemeToggle = () => {
   const { setTheme } = useTheme();
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="flex items-center justify-center">
@@ -52,6 +54,7 @@ export const ThemeToggle = () => {
   );
 };
 
+
 // --- Main Footer Component ---
 const navigation = {
   categories: [
@@ -66,19 +69,19 @@ const navigation = {
             { name: "Home", href: "/" },
             { name: "About", href: "/about" },
             { name: "Services", href: "/#services" },
-            { name: "Portfolio", href: "/portfolio" },
-            { name: "Products", href: "/products" },
+            { name: "Portfolio", href: "/#portfolio" },
           ],
         },
         {
           id: "more",
           name: "More",
           items: [
-            { name: "Testimonials", href: "/testimonials" },
+            { name: "Testimonials", href: "/#testimonials" },
             { name: "Awards", href: "/awards" },
             { name: "Contact", href: "/contact" },
           ],
         },
+
         {
           id: "contact-info",
           name: "Contact",
