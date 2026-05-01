@@ -1,4 +1,5 @@
 
+import { StatsSection } from "@/components/stats-section";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           </p>
         </div>
 
-
+        <StatsSection />
       </main>
     </div>
   );
