@@ -1,4 +1,4 @@
-import { TestimonialSection } from "@/components/testimonial-section";
+
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
           </p>
         </div>
 
-        <TestimonialSection />
+
       </main>
     </div>
   );
