@@ -14,6 +14,7 @@ const navLinks = [
   { name: "Products", href: "/products" },
   { name: "Testimonials", href: "/#testimonials" },
   { name: "Awards", href: "/awards" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -49,7 +50,8 @@ export function Navbar() {
             ))}
           </ul>
           <Link
-            href="/contact"
+            href="https://wa.link/kvw9gr"
+            target="_blank"
             className="bg-[#063b36] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#042824] transition-all shadow-sm"
           >
             Book a Call
@@ -83,7 +85,8 @@ export function Navbar() {
             ))}
             <li className="pt-4 border-t border-slate-100 dark:border-slate-900 flex items-center justify-between">
               <Link
-                href="/contact"
+                href="https://wa.link/kvw9gr"
+                target="_blank"
                 className="bg-[#063b36] text-white px-6 py-3 rounded-full text-center font-semibold flex-1 mr-4"
                 onClick={() => setIsOpen(false)}
               >

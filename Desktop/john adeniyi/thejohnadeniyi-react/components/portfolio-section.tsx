@@ -80,7 +80,8 @@ export function PortfolioSection() {
                 
                 <div className="mt-auto">
                   <Link 
-                    href="/contact" 
+                    href="https://wa.link/kvw9gr" 
+                    target="_blank"
                     className="inline-flex items-center text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors group/link"
                   >
                     Learn More

@@ -64,7 +64,8 @@ export default function ProductsPage() {
               {/* Learn More Button */}
               <div className="p-4 flex justify-center border-t border-slate-100 dark:border-slate-800">
                 <Link 
-                  href="/contact" 
+                  href="https://wa.link/kvw9gr" 
+                  target="_blank"
                   className="block w-full text-center px-6 py-3 rounded-full font-medium text-sm transition-colors bg-[#063b36] text-white hover:bg-[#042824]"
                 >
                   Learn More

@@ -84,7 +84,7 @@ const navigation = {
             { name: "Products", href: "/products" },
             { name: "Testimonials", href: "/#testimonials" },
             { name: "Awards", href: "/awards" },
-            { name: "Contact", href: "/contact" },
+            { name: "Contact", href: "/#contact" },
           ],
         },
 
@@ -93,7 +93,7 @@ const navigation = {
           name: "Contact",
           items: [
             { name: "hellojohnadeniyi@gmail.com", href: "mailto:hellojohnadeniyi@gmail.com" },
-            { name: "Book a Call", href: "/contact" },
+            { name: "Book a Call", href: "https://wa.link/kvw9gr" },
           ],
         },
       ],
