@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Mail, Heart, ArrowUp, Briefcase } from "lucide-react";
 
-// Inline brand icons since they were removed from lucide-react v1+
-const Instagram = ({ className }: { className?: string }) => (
+// --- Social Icons ---
+const InstagramIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
 );
 
-const X = ({ className }: { className?: string }) => (
+const XIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M4 4l16 16"/><path d="M4 20L20 4"/></svg>
 );
 
@@ -17,7 +17,12 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
 );
 
+const MediumIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.82 6.82 0 010 12a6.82 6.82 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" /></svg>
+);
+
 // --- Theme Toggle Component ---
+
 
 export const ThemeToggle = () => {
   const { setTheme } = useTheme();
@@ -152,16 +157,20 @@ export function Footer() {
           <Link aria-label="Email" href="mailto:hellojohnadeniyi@gmail.com" target="_blank" className={Underline}>
             <Mail strokeWidth={1.5} className="h-5 w-5 text-slate-600 dark:text-slate-400" />
           </Link>
-          <Link aria-label="Twitter" href="#" target="_blank" className={Underline}>
-            <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
-          </Link>
-          <Link aria-label="Instagram" href="#" target="_blank" className={Underline}>
-            <Instagram className="h-5 w-5 text-slate-600 dark:text-slate-400" />
-          </Link>
-          <Link aria-label="LinkedIn" href="#" target="_blank" className={Underline}>
+          <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/adeniyi-john?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" className={Underline}>
             <LinkedinIcon className="h-5 w-5 text-slate-600 dark:text-slate-400" />
           </Link>
+          <Link aria-label="Instagram" href="https://www.instagram.com/johnnykeystech01?igsh=ZTRtcXdubGY4dDhx" target="_blank" className={Underline}>
+            <InstagramIcon className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+          </Link>
+          <Link aria-label="X (Twitter)" href="https://x.com/AdeniyiJohnOla1" target="_blank" className={Underline}>
+            <XIcon className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+          </Link>
+          <Link aria-label="Medium" href="https://medium.com/@johnnykeystech01" target="_blank" className={Underline}>
+            <MediumIcon className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+          </Link>
         </div>
+
         
         <ThemeToggle />
       </div>
