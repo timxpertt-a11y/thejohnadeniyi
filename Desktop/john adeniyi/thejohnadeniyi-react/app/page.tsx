@@ -3,6 +3,7 @@ import Link from "next/link";
 import { StatsSection } from "@/components/stats-section";
 import { TestimonialSection } from "@/components/testimonial-section";
 import { PortfolioSection } from "@/components/portfolio-section";
+import { ServicesSection } from "@/components/services-section";
 
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
 
 
         <StatsSection />
+        <ServicesSection />
         <PortfolioSection />
         <TestimonialSection />
       </main>

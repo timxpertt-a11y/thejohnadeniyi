@@ -29,7 +29,7 @@ const PRODUCTS = [
 
 export default function ProductsPage() {
   return (
-    <div className="bg-zinc-50 dark:bg-black min-h-screen">
+    <div className="bg-zinc-50 dark:bg-black min-h-screen pt-24">
       <main className="max-w-7xl mx-auto px-6 py-20">
         
         {/* Header Section */}

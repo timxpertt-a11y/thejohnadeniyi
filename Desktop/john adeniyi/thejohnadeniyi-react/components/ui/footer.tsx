@@ -81,6 +81,7 @@ const navigation = {
           id: "more",
           name: "More",
           items: [
+            { name: "Products", href: "/products" },
             { name: "Testimonials", href: "/#testimonials" },
             { name: "Awards", href: "/awards" },
             { name: "Contact", href: "/contact" },
