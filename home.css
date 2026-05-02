@@ -379,6 +379,17 @@
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 2rem); padding-bottom: 3rem; }
   .hero__inner { padding-top: 2rem; padding-bottom: 2rem; }
   .hero__scroll { display: none; }
+
+  .hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero__actions .btn {
+    flex: 0 1 auto;
+    width: auto;
+  }
 }
 
 /* ================================================
