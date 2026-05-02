@@ -184,69 +184,72 @@
 }
 
 /* ─── Products Page ─── */
-.product-card {
+.product-horizontal {
+  display: flex;
   background: var(--white);
   border: 1px solid var(--grey-light);
-  border-radius: 2px;
+  border-radius: 8px;
   overflow: hidden;
   transition: var(--transition);
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 3rem;
 }
 
-.product-card:hover {
+.product-horizontal:hover {
   box-shadow: 0 16px 48px rgba(8,63,60,0.09);
   transform: translateY(-3px);
   border-color: var(--accent-teal);
 }
 
-.product-card__thumb {
-  aspect-ratio: 16/9;
+.product-horizontal__thumb {
+  flex: 0 0 45%;
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #f8f9fa;
 }
 
-.product-card__body {
-  padding: 2rem;
+.product-horizontal__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-horizontal__body {
+  padding: 3.5rem 3rem;
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.product-card__type {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-  color: var(--accent-teal);
-}
-
-.product-card__title {
+.product-horizontal__title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: 500;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  line-height: 1.2;
 }
 
-.product-card__desc { font-size: 0.88rem; color: var(--grey-dark); flex: 1; margin-bottom: 1.5rem; }
-
-.product-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--grey-light);
+.product-horizontal__desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--grey-dark);
+  margin-bottom: 2.5rem;
 }
 
-.product-card__price {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 300;
-  color: var(--accent-dark);
+@media (max-width: 900px) {
+  .product-horizontal {
+    flex-direction: column;
+  }
+  .product-horizontal__thumb {
+    flex: 0 0 auto;
+    aspect-ratio: 16/10;
+  }
+  .product-horizontal__body {
+    padding: 2.5rem 2rem;
+  }
 }
 
 /* ─── Testimonials Page ─── */
