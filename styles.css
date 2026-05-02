@@ -92,12 +92,7 @@ p  { font-size: clamp(0.9rem, 1.2vw, 1.05rem); color: var(--grey-dark); }
   align-items: center;
   gap: 0.5rem;
 }
-.label::before {
-  content: '';
-  display: block;
-  width: 24px; height: 1px;
-  background: var(--accent-teal);
-}
+
 
 /* ─── Buttons — rounded rectangle ─── */
 .btn {
