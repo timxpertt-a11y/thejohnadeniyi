@@ -1048,3 +1048,142 @@
 @media (max-width: 380px) {
   .stats-row { grid-template-columns: 1fr; }
 }
+
+/* ================================================
+   TESTIMONIAL MARQUEE
+   ================================================ */
+.testi-section { 
+  padding: 6rem 0; 
+  background: var(--bg-light, #fafafa); 
+  overflow: hidden;
+}
+
+.testi-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 2rem;
+  overflow: hidden;
+}
+
+/* Optional gradient fade at edges */
+.testi-marquee-wrapper::before,
+.testi-marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.testi-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-light, #fafafa) 0%, transparent 100%);
+}
+
+.testi-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-light, #fafafa) 0%, transparent 100%);
+}
+
+.testi-marquee-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scroll-marquee 40s linear infinite;
+  padding-left: 2rem;
+}
+
+/* Pause on hover */
+.testi-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1rem)); } /* -50% of track width minus half the gap */
+}
+
+/* Overriding old testi-card */
+.testi-card {
+  width: 400px;
+  background: var(--white);
+  border: 1px solid var(--grey-light);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.testi-card:hover {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  transform: translateY(-5px);
+}
+
+.testi-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testi-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--grey-light);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.testi-card__author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.testi-card__author strong {
+  font-size: 1.05rem;
+  color: var(--text-dark, #18181b);
+}
+
+.testi-feature__stars {
+  color: var(--accent-orange, #f59e0b);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* Overriding old testi-card__quote */
+.testi-card__quote {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text, #52525b);
+  position: relative;
+  padding-left: 0;
+}
+
+.testi-card__quote::before {
+  content: '\201C';
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--accent-teal);
+  opacity: 0.1;
+  line-height: 0;
+  position: absolute;
+  top: 1rem;
+  left: -0.5rem;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .testi-card { width: 320px; padding: 2rem; }
+  .testi-card__avatar { width: 45px; height: 45px; }
+  .testi-card__quote { font-size: 0.9rem; }
+}
