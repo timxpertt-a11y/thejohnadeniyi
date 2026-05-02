@@ -774,50 +774,32 @@
 }
 
 .port-tile--2c {
-  background: #F3F3F3;
-  border: 1px solid var(--grey-light);
+  background-image: url('images/WhatsApp Image 2026-05-02 at 8.31.46 AM.jpeg');
+  background-size: cover;
+  background-position: center;
   position: relative;
-  display: flex; align-items: center; justify-content: center;
-}
-.port-tile--2c::after {
-  content: 'JA';
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 700;
-  color: var(--accent-dark);
-  opacity: 0.15;
-  letter-spacing: -0.04em;
 }
 
 /* Strip 3 tiles — dark + mixed palette */
 .port-tile--3a {
-  background: #121212;
+  background-image: url('images/WhatsApp Image 2026-05-02 at 8.34.27 AM.jpeg');
+  background-size: cover;
+  background-position: center;
   position: relative;
-}
-.port-tile--3a::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(28,199,190,0.2) 0%, transparent 70%);
 }
 
 .port-tile--3b {
-  background: linear-gradient(135deg, #E86531 0%, #083F3C 100%);
+  background-image: url('images/WhatsApp Image 2026-05-02 at 8.36.53 AM.jpeg');
+  background-size: cover;
+  background-position: center;
   position: relative;
-}
-.port-tile--3b::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px);
 }
 
 .port-tile--3c {
-  background: linear-gradient(145deg, #083F3C 0%, #1CC7BE 100%);
+  background-image: url('images/WhatsApp Image 2026-05-02 at 9.26.19 AM.jpeg');
+  background-size: cover;
+  background-position: center;
   position: relative;
-}
-.port-tile--3c::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.18) 0%, transparent 55%);
 }
 
 /* ── wi-card wide variant (Visual Branding last card) ── */
