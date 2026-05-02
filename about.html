@@ -48,161 +48,194 @@
 <section class="page-hero">
   <div class="container">
     <p class="label page-hero__label">About</p>
-    <h1 class="page-hero__title">Strategy meets<br><em style="color:var(--accent-teal);">identity.</em></h1>
-    <p class="page-hero__sub">I've spent years working at the intersection of brand strategy, sales psychology, and revenue design helping founders build brands that that do more than look good.</p>
+    <h1 class="page-hero__title">John Olaoluwa<br><em style="color:var(--accent-teal);">Adeniyi.</em></h1>
+    <p class="page-hero__sub">Certified project manager, brand-to-revenue strategist, digital product creator, and transformational speaker.</p>
   </div>
 </section>
 
-<!-- ─── Story ─── -->
+<!-- ─── Story & Bio ─── -->
 <section class="section">
+  <style>
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (min-width: 992px) {
+      .about-grid {
+        grid-template-columns: 400px 1fr;
+        gap: 5rem;
+      }
+    }
+    .about-image-wrapper {
+      position: sticky;
+      top: 120px;
+      border-radius: 24px;
+      padding: 10px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    .about-image {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(10%) contrast(105%);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .about-image-wrapper:hover .about-image {
+      filter: grayscale(0%) contrast(100%);
+      transform: scale(1.02);
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .bio-block p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text-light, #d4d4d8);
+      margin: 0;
+    }
+    .bio-block strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .bio-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .bio-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 203, 169, 0.4);
+      background: rgba(255,255,255,0.04);
+    }
+    .bio-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--accent-teal, #00CBA9);
+      border-radius: 4px 0 0 4px;
+    }
+    .bio-card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e4e4e7;
+      margin: 0;
+    }
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(0, 203, 169, 0.05) 0%, rgba(0,0,0,0) 100%);
+      border: 1px solid rgba(0, 203, 169, 0.2);
+    }
+    .highlight-card::before {
+      display: none;
+    }
+    .stats-row {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--accent-teal, #00CBA9);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.7);
+    }
+    .summary-block {
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--accent-teal, #00CBA9);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 3rem;
+      margin-top: 1rem;
+    }
+    .summary-block p {
+      color: inherit;
+      font-size: inherit;
+      line-height: 1.7;
+    }
+  </style>
+
   <div class="container">
-    <div class="grid-2" style="gap:5rem;align-items:start;">
-      <div>
-        <div class="about-portrait" aria-label="Designer portrait placeholder">
-          <div class="about-portrait__img">
-            <div class="about-portrait__overlay">
-              <span>S.O.</span>
+    <div class="about-grid">
+      <!-- Image Column -->
+      <div class="reveal">
+        <div class="about-image-wrapper">
+          <img src="images/John%20Adeniyi.jpeg" alt="John Olaoluwa Adeniyi" class="about-image">
+        </div>
+      </div>
+      
+      <!-- Content Column -->
+      <div class="about-content">
+        <div class="bio-block reveal reveal-delay-1">
+          <p><strong>John Olaoluwa Adeniyi</strong> is a passionate lover of God, a certified project manager, creative graphic designer, brand-to-revenue strategist, digital product creator, and transformational speaker.</p>
+        </div>
+
+        <div class="bio-block reveal">
+          <p>He currently serves as the Brand Strategist at <strong>Speakspirations_with_the_voice</strong>—an interview-driven media brand spotlighting impactful individuals and their journeys to success.</p>
+        </div>
+
+        <div class="bio-card reveal">
+          <p>He is also the Co-founder of the <strong>Design Workshop Masterclass Community</strong>—a fast-growing paid community of nearly 300 creatives across 13+ countries, focused on helping individuals leverage smartphone design skills for income, impact, influence, and sustainability.</p>
+        </div>
+
+        <div class="bio-block reveal">
+          <p>As a certified project manager, John has successfully led and collaborated on multiple projects—from ideation to execution, bringing ideas to life with clarity, structure, and strategic results.</p>
+        </div>
+
+        <div class="bio-card highlight-card reveal">
+          <div class="stats-row">
+            <div class="stat">
+              <span class="stat-num">13k+</span>
+              <span class="stat-label">Designers Mentored</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">30+</span>
+              <span class="stat-label">Countries Reached</span>
             </div>
           </div>
-          <div class="about-portrait__caption">
-            <span>Brand Strategist & Identity Designer</span>
-            <span>Lagos · New York · Remote</span>
-          </div>
+          <p>Over the past three years, he has reached, trained and mentored over 13,000 designers in more than 30 countries of the world, helping them transform raw creativity into profitable and impactful opportunities through smartphone design, digital excellence, and intentional positioning.</p>
         </div>
-      </div>
-      <div>
-        <p class="label reveal">My Story</p>
-        <h2 class="reveal reveal-delay-1" style="margin:1rem 0 2rem;">Built from the<br>inside out.</h2>
-        <div class="about-story">
-          <p class="reveal reveal-delay-1">Many brilliant brands never reach the level they deserve. Not because the founders lack talent. Not because the ideas are weak.</p>
-          <p class="reveal reveal-delay-2">But because somewhere along the journey, things become scattered the message blurs, the offers confuse, and growth stalls before it truly begins.</p>
-          <p class="reveal reveal-delay-2">I've seen founders with incredible expertise struggle to translate their knowledge into a clear brand position, profitable offers, and sustainable growth systems.</p>
-          <p class="reveal reveal-delay-3"><strong>That gap is where I come in.</strong></p>
-          <p class="reveal reveal-delay-3">I work with founders, coaches, and digital product brands to move from scattered ideas to strategic clarity. Together, we turn vision into structure not just pretty visuals, but brands designed to communicate, convert, and scale.</p>
-        </div>
-        <div class="about-tags reveal reveal-delay-4">
-          <span class="tag tag--teal">Brand Strategist</span>
-          <span class="tag tag--dark">Offer Designer</span>
-          <span class="tag">Identity Systems</span>
-          <span class="tag">Revenue Architecture</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ─── Values / Approach ─── -->
-<section class="section" style="background:var(--accent-dark);">
-  <div class="container">
-    <div class="section-header">
-      <p class="label" style="color:var(--accent-teal);">My Approach</p>
-      <h2 style="color:var(--white);margin-top:1rem;">This isn't branding<br>for aesthetics.</h2>
-      <p style="color:rgba(255,255,255,0.6);max-width:500px;margin-top:1rem;">It's about building brands that communicate clearly, convert consistently, and scale sustainably.</p>
-    </div>
-    <div class="grid-3" style="margin-top:4rem;">
-      <div class="approach-card reveal">
-        <div class="approach-card__icon" aria-hidden="true">◈</div>
-        <h4 style="color:var(--white);font-family:var(--font-display);font-size:1.5rem;margin-bottom:1rem;">Clarity First</h4>
-        <p style="color:rgba(255,255,255,0.6);">Every decision starts with a clear question: does this make the brand easier to understand, remember, and choose?</p>
-      </div>
-      <div class="approach-card reveal reveal-delay-2">
-        <div class="approach-card__icon" aria-hidden="true">⬡</div>
-        <h4 style="color:var(--white);font-family:var(--font-display);font-size:1.5rem;margin-bottom:1rem;">Strategy-Led</h4>
-        <p style="color:rgba(255,255,255,0.6);">Design follows strategy, never the reverse. The visual identity is the expression of a clear, well-defined position.</p>
-      </div>
-      <div class="approach-card reveal reveal-delay-3">
-        <div class="approach-card__icon" aria-hidden="true">◻</div>
-        <h4 style="color:var(--white);font-family:var(--font-display);font-size:1.5rem;margin-bottom:1rem;">Built to Scale</h4>
-        <p style="color:rgba(255,255,255,0.6);">Systems, frameworks, and identity guidelines that grow with the brand not locked to a single campaign or season.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="bio-block reveal">
+          <p>A gifted communicator, John has graced multiple award platforms and spoken across various physical and virtual stages, delivering powerful sessions on growth, branding, sales and marketing, positioning, audience and community building, and other key themes in the creative and digital space. His delivery is marked by clarity, inspiration, and practical insights that shift minds and activate purpose.</p>
+        </div>
 
-<!-- ─── Expertise ─── -->
-<section class="section">
-  <div class="container">
-    <div class="section-header section-header--center">
-      <p class="label">Expertise</p>
-      <h2 style="margin-top:1rem;">Where my work lives.</h2>
-    </div>
-    <div class="expertise-grid">
-      <div class="expertise-item reveal">
-        <div class="expertise-item__bar"><div class="expertise-item__fill" style="width:95%"></div></div>
-        <div class="expertise-item__meta">
-          <span>Brand Strategy</span>
-          <span>95%</span>
+        <div class="bio-card reveal">
+          <p>He is the founder and visioneer of the <strong>Builders Conclave</strong> — a transformative space where he helps visionaries turn their ideas into impactful, lasting systems. There, he equips people with the mindset, structure, and strategy they need to build what truly endures beyond hype.</p>
         </div>
-      </div>
-      <div class="expertise-item reveal reveal-delay-1">
-        <div class="expertise-item__bar"><div class="expertise-item__fill" style="width:90%"></div></div>
-        <div class="expertise-item__meta">
-          <span>Identity Design</span>
-          <span>90%</span>
-        </div>
-      </div>
-      <div class="expertise-item reveal reveal-delay-2">
-        <div class="expertise-item__bar"><div class="expertise-item__fill" style="width:88%;background:var(--accent-orange)"></div></div>
-        <div class="expertise-item__meta">
-          <span>Offer Architecture</span>
-          <span>88%</span>
-        </div>
-      </div>
-      <div class="expertise-item reveal reveal-delay-3">
-        <div class="expertise-item__bar"><div class="expertise-item__fill" style="width:85%;background:var(--accent-orange)"></div></div>
-        <div class="expertise-item__meta">
-          <span>Revenue Design</span>
-          <span>85%</span>
-        </div>
-      </div>
-      <div class="expertise-item reveal reveal-delay-4">
-        <div class="expertise-item__bar"><div class="expertise-item__fill" style="width:92%"></div></div>
-        <div class="expertise-item__meta">
-          <span>Sales Psychology</span>
-          <span>92%</span>
-        </div>
-      </div>
-      <div class="expertise-item reveal reveal-delay-4">
-        <div class="expertise-item__bar"><div class="expertise-item__fill" style="width:80%;background:var(--accent-orange)"></div></div>
-        <div class="expertise-item__meta">
-          <span>Founder Coaching</span>
-          <span>80%</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ─── Stats ─── -->
-<section class="section--sm" style="background:var(--white);border-top:1px solid var(--grey-light);border-bottom:1px solid var(--grey-light);">
-  <div class="container">
-    <div class="grid-4">
-      <div class="stat-block reveal">
-        <div class="stat-block__num"><span data-count="30" data-suffix="+">0+</span></div>
-        <div class="stat-block__label">Brands Transformed</div>
-      </div>
-      <div class="stat-block reveal reveal-delay-1">
-        <div class="stat-block__num"><span data-count="5" data-suffix="">0</span></div>
-        <div class="stat-block__label">Years Experience</div>
-      </div>
-      <div class="stat-block reveal reveal-delay-2">
-        <div class="stat-block__num"><span data-count="20" data-suffix="">0</span></div>
-        <div class="stat-block__label">Industries Served</div>
-      </div>
-      <div class="stat-block reveal reveal-delay-3">
-        <div class="stat-block__num"><span data-count="90" data-suffix="%">0%</span></div>
-        <div class="stat-block__label">Client Retention</div>
+        <div class="bio-block reveal">
+          <p>Currently a 400-level student of Electronic and Electrical Engineering at Obafemi Awolowo University, he is committed to value-driven leadership and equipping the next generation with the tools and mindset needed to thrive in a changing world.</p>
+        </div>
+
+        <div class="bio-block summary-block reveal">
+          <p>"Whether through design, coaching, speaking, or strategic consulting, John inspires young minds to recognize their potential, maximize what they have, and build sustainable platforms for long-term relevance, income, and impact."</p>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ─── CTA ─── -->
-<section class="section--sm">
-  <div class="container text-center">
-    <p class="label" style="justify-content:center;">Ready to work together?</p>
-    <h2 style="margin:1rem auto 1.5rem;max-width:500px;">Let's build something that lasts.</h2>
-    <a href="contact.html" class="btn btn-primary">Start a Conversation →</a>
   </div>
 </section>
 
